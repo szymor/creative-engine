@@ -22,6 +22,13 @@ Controls &gControls = child;
 #define DISPLAY
 #endif
 
+#ifdef DESKTOP_SDL1
+#include "./DesktopSDL1Controls/DesktopSDL1Controls.h"
+static DesktopSDL1Controls child;
+Controls &gControls = child;
+#define DISPLAY
+#endif
+
 // Networked RGB Matrix
 #ifdef __MODUS_TARGET_NETWORK_DISPLAY__
 #include "./NetworkControls/NetworkControls.h"

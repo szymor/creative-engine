@@ -19,9 +19,8 @@
 
 typedef void (*TAudioDriverCallback)(void *userdata, Uint8 *stream, int len);
 
-#ifndef __DINGUX__
+#if !defined(__DINGUX__) && !defined(DESKTOP_SDL1)
 typedef SDL_AudioCallback TAudioDriverCallback;
-
 #endif
 
 //#ifdef __MODUS_TARGET_SDL2_AUDIO__

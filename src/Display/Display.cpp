@@ -15,6 +15,13 @@ Display &gDisplay = child;
 #define DISPLAY
 #endif
 
+#ifdef DESKTOP_SDL1
+#include "./DesktopSDL1Display/DesktopSDL1Display.h"
+static DesktopSDL1Display child;
+Display &gDisplay = child;
+#define DISPLAY
+#endif
+
 // Networked RGB Matrix
 #ifdef __MODUS_TARGET_NETWORK_DISPLAY__
 #include "./NetworkDisplay/NetworkDisplay.h"

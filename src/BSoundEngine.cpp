@@ -115,7 +115,7 @@ void BSoundEngine::InitAudioEngine(TUint8 aNumSfxChannels, TUint8 aNumSfxFiles) 
   audioSpec.size = 500;
   audioSpec.callback = timerCallback;
 
-#ifdef __DINGUX__
+#if defined(__DINGUX__) || defined(DESKTOP_SDL1)
   audioSpec.samples = 512;
 #else
   audioSpec.samples = 1024;

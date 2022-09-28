@@ -8,11 +8,7 @@
 #define DISPLAY_HEIGHT (SCREEN_HEIGHT)
 
 #ifndef SCREEN_DEPTH
-#ifdef __DINGUX__
 #define SCREEN_DEPTH 8
-#else
-#define SCREEN_DEPTH 8
-#endif
 #endif
 
 #endif //DISPLAYDEFINES_H

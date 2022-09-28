@@ -46,7 +46,7 @@
 //#define CREA    0x61657243    /* "Crea" */
 
 // Copied from SDL2 to enable this to work on LDK
-#ifdef __DINGUX__
+#if defined(__DINGUX__) || defined(DESKTOP_SDL1)
 typedef Uint16 SDL_AudioFormat;
 typedef Uint32 SDL_AudioDeviceID;
 #define SDL_AUDIO_ALLOW_FREQUENCY_CHANGE    0x00000001
@@ -277,7 +277,7 @@ void SDLCALL Mixer_MixChannels(Uint8 *stream, int len) {
           }
 
           mix_input = Mixer_DoEffects(i, mix_channel[i].samples, mixable);
-#ifdef __DINGUX__
+#if defined(__DINGUX__) || defined(DESKTOP_SDL1)
           SDL_MixAudio(stream + index, mix_input, mixable, volume);
 #else
           SDL_MixAudioFormat(stream + index, mix_input, mixer.format, mixable, volume);
@@ -305,7 +305,7 @@ void SDLCALL Mixer_MixChannels(Uint8 *stream, int len) {
           }
 
           mix_input = Mixer_DoEffects(i, mix_channel[i].chunk->abuf, remaining);
-#ifdef __DINGUX__
+#if defined(__DINGUX__) || defined(DESKTOP_SDL1)
           SDL_MixAudio(stream + index, mix_input, remaining, volume);
 #else
           SDL_MixAudioFormat(stream + index, mix_input, mixer.format, remaining, volume);
@@ -1476,7 +1476,7 @@ int Mixer_GroupNewer(int tag) {
 //}
 
 void Mixer_LockAudio(void) {
-#ifdef __DINGUX__
+#if defined(__DINGUX__) || defined(DESKTOP_SDL1)
   SDL_LockAudio();
 #else
   SDL_LockAudioDevice(audio_device);
@@ -1485,7 +1485,7 @@ void Mixer_LockAudio(void) {
 }
 
 void Mixer_UnlockAudio(void) {
-#ifdef __DINGUX__
+#if defined(__DINGUX__) || defined(DESKTOP_SDL1)
   SDL_UnlockAudio();
 #else
   SDL_UnlockAudioDevice(audio_device);
